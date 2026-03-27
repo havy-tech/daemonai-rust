@@ -1,0 +1,18 @@
+[package]
+name = "daemonai-sdk"
+version = "0.1.0"
+edition = "2024"
+description = "DaemonAI SDK for Rust -- send runtime observations to the daemon"
+license = "MIT"
+keywords = ["daemonai", "observability", "debugging", "ai-agents"]
+
+[dependencies]
+reqwest = { version = "0.13", features = ["json"], default-features = false, optional = true }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ureq = { version = "3", optional = true }
+
+[features]
+default = ["blocking"]
+blocking = ["ureq"]
+async = ["reqwest"]
